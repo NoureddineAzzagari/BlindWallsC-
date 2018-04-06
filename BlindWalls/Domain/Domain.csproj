@@ -55,9 +55,9 @@
     <Compile Include="Concrete\EFMuralRepository.cs" />
     <Compile Include="Entities\Artist.cs" />
     <Compile Include="Entities\Mural.cs" />
-    <Compile Include="Migrations\201804060845521_Add Mural and Artist.cs" />
-    <Compile Include="Migrations\201804060845521_Add Mural and Artist.Designer.cs">
-      <DependentUpon>201804060845521_Add Mural and Artist.cs</DependentUpon>
+    <Compile Include="Migrations\201804060946552_Artist &amp; Mural.cs" />
+    <Compile Include="Migrations\201804060946552_Artist &amp; Mural.Designer.cs">
+      <DependentUpon>201804060946552_Artist &amp; Mural.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -67,8 +67,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201804060845521_Add Mural and Artist.resx">
-      <DependentUpon>201804060845521_Add Mural and Artist.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201804060946552_Artist &amp; Mural.resx">
+      <DependentUpon>201804060946552_Artist &amp; Mural.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

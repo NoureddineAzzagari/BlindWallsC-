@@ -17,9 +17,9 @@ namespace Domain.Concrete
             return context.Artists;
         }
 
-        public Artist GetArtist(string muralName)
+        public Artist GetArtist(string muralName, string password)
         {
-            return context.Artists.Where(a => a.ArtistName == muralName).Select(a => a).First();
+            return context.Artists.Where(a => a.ArtistName == muralName && a.ArtistPassword == password).Select(a => a).First();
         }
 
         public Artist GetArtistWithId(int artistId)

@@ -11,7 +11,7 @@ namespace Domain.Abstract
     {
         IEnumerable<Artist> getAll();
 
-        Artist GetArtist(string username);
+        Artist GetArtist(string username, string password);
 
         void InsertArtist(Artist artist);
 
