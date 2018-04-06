@@ -6,9 +6,6 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -35,11 +32,15 @@
             @Html.DisplayFor(modelItem => item.ArtistID)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MuralId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MuralId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MuralId })
+            @Html.ActionLink("Edit", "EditMural", new { id=item.MuralId }) |
+            @Html.ActionLink("Detail", "MuralDetail", new { id=item.MuralId }) |
+            @Html.ActionLink("Delete", "DeleteMural", new { id=item.MuralId })
         </td>
     </tr>
 }
 
 </table>
+
+<p>
+	@Html.ActionLink("Create New", "Create")
+</p>

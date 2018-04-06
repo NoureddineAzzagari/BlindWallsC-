@@ -39,6 +39,9 @@ namespace BlindWalls.Controllers
                 return View("LogIn");
             }
 
+            var artist = artistRepository.GetArtist(model.Username, model.Password);
+            int artistId = artist.ArtistID;
+
             if (authManager.CheckAccountValidity(model.Username, model.Password))
             {
                 var identity = new ClaimsIdentity(new[]
@@ -50,7 +53,8 @@ namespace BlindWalls.Controllers
 
                 authManager.SignIn(identity);
 
-                return Redirect(GetRedirectUrl(model.ReturnUrl));
+                TempData["artistId"] = artistId;
+                return RedirectToAction("Index", "Murals");
             }
 
             ModelState.AddModelError("", "Uw gebruikersnaam of wachtwoord is onjuist of u heeft nog geen toegang tot het systeem.");
@@ -65,6 +69,15 @@ namespace BlindWalls.Controllers
             }
 
             return returnUrl;
+        }
+
+        public ActionResult LogOut()
+        {
+            var ctx = Request.GetOwinContext();
+            var authManager = ctx.Authentication;
+
+            authManager.SignOut("ApplicationCookie");
+            return RedirectToAction("LogIn", "Auth");
         }
     }
 }

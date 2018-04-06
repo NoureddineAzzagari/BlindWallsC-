@@ -21,6 +21,11 @@ namespace Domain.Concrete
             return context.Murals.Where(a => a.MuralName == username).Select(a => a).First();
         }
 
+        public IEnumerable<Mural> GetMuralsWithArtistId(int artistId)
+        {
+            return context.Murals.Where(m => m.ArtistID == artistId);
+        }
+
         public Mural GetMuralWithId(int muralId)
         {
             return context.Murals.Where(a => a.MuralId == muralId).Select(a => a).First();

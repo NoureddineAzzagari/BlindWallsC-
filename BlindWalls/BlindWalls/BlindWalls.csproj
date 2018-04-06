@@ -158,6 +158,7 @@
     </Compile>
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Models\LogInModel.cs" />
+    <Compile Include="Models\MuralModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StartUp.cs" />
   </ItemGroup>
@@ -166,10 +167,10 @@
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Murals\Create.cshtml" />
-    <Content Include="Views\Murals\Delete.cshtml" />
-    <Content Include="Views\Murals\Details.cshtml" />
-    <Content Include="Views\Murals\Edit.cshtml" />
+    <Content Include="Views\Murals\CreateMural.cshtml" />
+    <Content Include="Views\Murals\DeleteMural.cshtml" />
+    <Content Include="Views\Murals\MuralDetail.cshtml" />
+    <Content Include="Views\Murals\EditMural.cshtml" />
     <Content Include="Views\Murals\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Artists\Create.cshtml" />

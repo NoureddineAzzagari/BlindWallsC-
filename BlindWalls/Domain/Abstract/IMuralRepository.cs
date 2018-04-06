@@ -17,5 +17,7 @@ namespace Domain.Abstract
         void SaveChanges();
 
         Mural GetMuralWithId(int artistId);
+
+        IEnumerable<Mural> GetMuralsWithArtistId(int artistId);
     }
 }

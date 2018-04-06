@@ -50,14 +50,32 @@
   <ItemGroup>
     <Compile Include="Abstract\IArtistRepository.cs" />
     <Compile Include="Abstract\IMuralRepository.cs" />
+    <Compile Include="Abstract\MuralBuilderInterface.cs" />
     <Compile Include="Concrete\EFArtistRepository.cs" />
     <Compile Include="Concrete\EFDbContext.cs" />
     <Compile Include="Concrete\EFMuralRepository.cs" />
+    <Compile Include="Concrete\MuralBuilder.cs" />
     <Compile Include="Entities\Artist.cs" />
     <Compile Include="Entities\Mural.cs" />
     <Compile Include="Migrations\201804060946552_Artist &amp; Mural.cs" />
     <Compile Include="Migrations\201804060946552_Artist &amp; Mural.Designer.cs">
       <DependentUpon>201804060946552_Artist &amp; Mural.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804061034275_Murallocation attribute added to Mural.cs" />
+    <Compile Include="Migrations\201804061034275_Murallocation attribute added to Mural.Designer.cs">
+      <DependentUpon>201804061034275_Murallocation attribute added to Mural.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804061134414_ffsd.cs" />
+    <Compile Include="Migrations\201804061134414_ffsd.Designer.cs">
+      <DependentUpon>201804061134414_ffsd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804061202366_Renamed the artist and mural tables.cs" />
+    <Compile Include="Migrations\201804061202366_Renamed the artist and mural tables.Designer.cs">
+      <DependentUpon>201804061202366_Renamed the artist and mural tables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804061206077_g.cs" />
+    <Compile Include="Migrations\201804061206077_g.Designer.cs">
+      <DependentUpon>201804061206077_g.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -69,6 +87,18 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201804060946552_Artist &amp; Mural.resx">
       <DependentUpon>201804060946552_Artist &amp; Mural.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804061034275_Murallocation attribute added to Mural.resx">
+      <DependentUpon>201804061034275_Murallocation attribute added to Mural.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804061134414_ffsd.resx">
+      <DependentUpon>201804061134414_ffsd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804061202366_Renamed the artist and mural tables.resx">
+      <DependentUpon>201804061202366_Renamed the artist and mural tables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804061206077_g.resx">
+      <DependentUpon>201804061206077_g.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

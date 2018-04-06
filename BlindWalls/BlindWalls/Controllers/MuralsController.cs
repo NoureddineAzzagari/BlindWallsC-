@@ -8,38 +8,50 @@ using System.Web;
 using System.Web.Mvc;
 using Domain;
 using Domain.Concrete;
+using Domain.Abstract;
+using BlindWalls.BusinessLogic.Manager;
+using BlindWalls.Models;
 
 namespace BlindWalls.Controllers
 {
     public class MuralsController : Controller
     {
-        private EFDbContext db = new EFDbContext();
+        private IMuralRepository muralRepository;
+        private MuralManager muralManager;
+        private int artistId;
+
+        public MuralsController(IMuralRepository muralRepository)
+        {
+            this.muralRepository = muralRepository;
+            muralManager = new MuralManager(muralRepository);
+        }
 
         // GET: Murals
         public ActionResult Index()
         {
-            return View(db.Murals.ToList());
+            //artistId = (int)TempData["artistId"];
+            var muralList = muralManager.GetAllMurals();
+            return View("Index", muralList);
         }
 
         // GET: Murals/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
-            if (id == null)
+            var mural = muralManager.GetMuralWithId(id);
+
+            if (mural != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return View("MuralDetail");
             }
-            Mural mural = db.Murals.Find(id);
-            if (mural == null)
-            {
-                return HttpNotFound();
-            }
-            return View(mural);
+            
+            return View();
         }
 
+        
         // GET: Murals/Create
         public ActionResult Create()
         {
-            return View();
+            return View("CreateMural");
         }
 
         // POST: Murals/Create
@@ -47,14 +59,16 @@ namespace BlindWalls.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MuralId,MuralName,MuralDescription,ArtistID")] Mural mural)
+        public ActionResult Create([Bind(Include = "MuralName, MuralDescription, MuralLocation, ArtistID")] MuralModel model)
         {
-            if (ModelState.IsValid)
-            {
-                db.Murals.Add(mural);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            MuralBuilderInterface muralBuilder = new MuralBuilder();
+            Mural mural = new Mural();
+            model.ArtistId = (int)TempData["idArtist"];
+
+            muralBuilder.buildArtistAccountWithRequiredParameters(model.MuralName, model.MuralDescription, model.ArtistId);
+            muralBuilder.buildArtistWithOptionalParameters(model.MuralLocation);
+
+            mural = muralBuilder.GetBuildedMural();
 
             return View(mural);
         }
@@ -62,16 +76,8 @@ namespace BlindWalls.Controllers
         // GET: Murals/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Mural mural = db.Murals.Find(id);
-            if (mural == null)
-            {
-                return HttpNotFound();
-            }
-            return View(mural);
+           
+            return View();
         }
 
         // POST: Murals/Edit/5
@@ -81,28 +87,15 @@ namespace BlindWalls.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "MuralId,MuralName,MuralDescription,ArtistID")] Mural mural)
         {
-            if (ModelState.IsValid)
-            {
-                db.Entry(mural).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+        
             return View(mural);
         }
 
         // GET: Murals/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Mural mural = db.Murals.Find(id);
-            if (mural == null)
-            {
-                return HttpNotFound();
-            }
-            return View(mural);
+           
+            return View();
         }
 
         // POST: Murals/Delete/5
@@ -110,19 +103,13 @@ namespace BlindWalls.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Mural mural = db.Murals.Find(id);
-            db.Murals.Remove(mural);
-            db.SaveChanges();
+            
             return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
+
         }
     }
 }
