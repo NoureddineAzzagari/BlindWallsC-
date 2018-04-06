@@ -8,9 +8,11 @@ using System.Web;
 using System.Web.Mvc;
 using Domain;
 using Domain.Concrete;
+using Domain.Entities;
 using Domain.Abstract;
 using BlindWalls.BusinessLogic.Manager;
 using BlindWalls.Models;
+using Domain.Entities;
 
 namespace BlindWalls.Controllers
 {
