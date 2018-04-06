@@ -1,0 +1,13 @@
+C:\Users\Noureddine\source\repos\BlindWalls\Domain\bin\Debug\Domain.dll.config
+C:\Users\Noureddine\source\repos\BlindWalls\Domain\bin\Debug\Domain.dll
+C:\Users\Noureddine\source\repos\BlindWalls\Domain\bin\Debug\Domain.pdb
+C:\Users\Noureddine\source\repos\BlindWalls\Domain\bin\Debug\EntityFramework.dll
+C:\Users\Noureddine\source\repos\BlindWalls\Domain\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Noureddine\source\repos\BlindWalls\Domain\bin\Debug\EntityFramework.xml
+C:\Users\Noureddine\source\repos\BlindWalls\Domain\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Noureddine\source\repos\BlindWalls\Domain\obj\Debug\Domain.csprojResolveAssemblyReference.cache
+C:\Users\Noureddine\source\repos\BlindWalls\Domain\obj\Debug\Domain.csproj.CoreCompileInputs.cache
+C:\Users\Noureddine\source\repos\BlindWalls\Domain\obj\Debug\Domain.dll
+C:\Users\Noureddine\source\repos\BlindWalls\Domain\obj\Debug\Domain.pdb
+C:\Users\Noureddine\source\repos\BlindWalls\Domain\obj\Debug\Domain.Migrations.AddMuralandArtist.resources
+C:\Users\Noureddine\source\repos\BlindWalls\Domain\obj\Debug\Domain.csproj.GenerateResource.Cache
