@@ -32,7 +32,11 @@ namespace BlindWalls.Controllers
         public ActionResult Index()
         {
             //artistId = (int)TempData["artistId"];
-            var muralList = muralManager.GetAllMurals();
+            var claimsIdentity = (ClaimsIdentity)this.User.Identity;
+            var claim = claimsIdentity.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier);
+            string userId = claim.Value;
+
+            var muralList = muralManager.GetMuralsWithArtistId(Int32.Parse(userId));
             return View("Index", muralList);
         }
 
