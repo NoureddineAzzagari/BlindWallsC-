@@ -46,7 +46,7 @@ namespace BlindWalls.Controllers
             {
                 var identity = new ClaimsIdentity(new[]
                 {
-                    new Claim(ClaimTypes.Name, model.Username)}, "ApplicationCookie");
+                    new Claim(ClaimTypes.NameIdentifier, artist.ArtistID.ToString()), new Claim(ClaimTypes.Name, model.Username)}, "ApplicationCookie");
 
                 var ctx = Request.GetOwinContext();
                 var authManager = ctx.Authentication;

@@ -13,6 +13,7 @@ using Domain.Abstract;
 using BlindWalls.BusinessLogic.Manager;
 using BlindWalls.Models;
 using Domain.Entities;
+using System.Security.Claims;
 
 namespace BlindWalls.Controllers
 {
@@ -65,14 +66,20 @@ namespace BlindWalls.Controllers
         {
             MuralBuilderInterface muralBuilder = new MuralBuilder();
             Mural mural = new Mural();
-            model.ArtistId = (int)TempData["idArtist"];
+
+            var claimsIdentity = (ClaimsIdentity)this.User.Identity;
+            var claim = claimsIdentity.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier);
+            string userId = claim.Value;
+            model.ArtistId = Int32.Parse(userId);
 
             muralBuilder.buildArtistAccountWithRequiredParameters(model.MuralName, model.MuralDescription, model.ArtistId);
             muralBuilder.buildArtistWithOptionalParameters(model.MuralLocation);
 
             mural = muralBuilder.GetBuildedMural();
+            mural.ArtistID = model.ArtistId;
+            muralRepository.InsertMural(mural);
 
-            return View(mural);
+            return View("CreateMural", mural);
         }
 
         // GET: Murals/Edit/5
