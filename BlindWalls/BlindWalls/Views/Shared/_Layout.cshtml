@@ -13,55 +13,35 @@
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
+                    <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                 </button>
-
-				<ul id="nav-mobile" class="right hide-on-med-and-down">
-					@if (User.Identity.Name != "")
-					{
-						<li>
-							<div class="chip">
-								@User.Identity.Name
-							</div>
-						</li>
-						<li><a href="/Auth/Logout">Log uit</a></li>
-					}
-				</ul>
-
-				<ul class="left hide-on-med-and-down">
-					@if (User.Identity.IsAuthenticated)
-					{
-						<li><a href="~/Present/PresentsOverview" class="brand-logo"</li>
-						<li><a href="@Url.Action("PresentsOverview", "Present")">Overzicht cadeaus</a></li>
-					}
-				</ul>
-
-				<ul class="left hide-on-med-and-down">
-					<li><a href="~/Auth/Login" class="brand-logo"</li>
-					<li><a href="@Url.Action("LogIn", "Auth")">Log in</a></li>
-				</ul>
-
-
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <a href="/"class="navbar-brand">Blind Walls C# Edition</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    @if (User.Identity.IsAuthenticated) { 
+                    <li> <a href="/Auth/LogOut/"style="text-align:right">Logout, @User.Identity.Name</a></li>
+					<li> <a href="/Murals/Index/" style="text-align:right">Overzicht muren</a></li>
+					}
+                    else
+                    {
+                        <li><a href="/Auth/LogIn/"style="text-align:right">Log in</a></li>
+                    }
                 </ul>
             </div>
         </div>
-    </div>
+        </div>
 
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>
+        </div>
 
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-</body>
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
+    </body>
 </html>

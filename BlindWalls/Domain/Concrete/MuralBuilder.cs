@@ -12,7 +12,7 @@ namespace Domain.Concrete
     {
         private Mural mural = new Mural();
 
-        public void buildArtistAccountWithRequiredParameters(string muralName, string muralDescription, int artistId)
+        public void buildArtistAccountWithRequiredParameters(string muralName, string muralDescription)
         {
             mural.MuralName = muralName;
             mural.MuralDescription = muralDescription;

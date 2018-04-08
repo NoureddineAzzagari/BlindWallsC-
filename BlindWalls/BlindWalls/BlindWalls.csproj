@@ -157,6 +157,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
+    <Compile Include="Infrastructure\Stats.cs" />
+    <Compile Include="Models\LastViewedList.cs" />
     <Compile Include="Models\LogInModel.cs" />
     <Compile Include="Models\MuralModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -167,10 +169,10 @@
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Murals\CreateMural.cshtml" />
-    <Content Include="Views\Murals\DeleteMural.cshtml" />
-    <Content Include="Views\Murals\MuralDetail.cshtml" />
-    <Content Include="Views\Murals\EditMural.cshtml" />
+    <Content Include="Views\Murals\Create.cshtml" />
+    <Content Include="Views\Murals\Delete.cshtml" />
+    <Content Include="Views\Murals\Details.cshtml" />
+    <Content Include="Views\Murals\Edit.cshtml" />
     <Content Include="Views\Murals\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Artists\Create.cshtml" />
@@ -180,6 +182,7 @@
     <Content Include="Views\Artists\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Auth\LogIn.cshtml" />
+    <Content Include="Views\Murals\LastViewed.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -211,7 +214,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>54332</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

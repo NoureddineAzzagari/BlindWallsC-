@@ -1,4 +1,5 @@
 ﻿using BlindWalls.BusinessLogic;
+using BlindWalls.Infrastructure;
 using BlindWalls.Models;
 using Domain.Abstract;
 using System;
@@ -14,6 +15,7 @@ namespace BlindWalls.Controllers
     {
         private AuthManager authManager;
         private IArtistRepository artistRepository;
+        Stats stats = Stats.GetSingleton();
         
         public AuthController(IArtistRepository artistRepository)
         {
@@ -46,10 +48,12 @@ namespace BlindWalls.Controllers
             {
                 var identity = new ClaimsIdentity(new[]
                 {
-                    new Claim(ClaimTypes.Name, model.Username)}, "ApplicationCookie");
+                    new Claim(ClaimTypes.NameIdentifier, artist.ArtistID.ToString()), new Claim(ClaimTypes.Name, model.Username)}, "ApplicationCookie");
 
                 var ctx = Request.GetOwinContext();
                 var authManager = ctx.Authentication;
+
+                stats.addUser();
 
                 authManager.SignIn(identity);
 
@@ -77,6 +81,8 @@ namespace BlindWalls.Controllers
             var authManager = ctx.Authentication;
 
             authManager.SignOut("ApplicationCookie");
+            stats.removeUser();
+
             return RedirectToAction("LogIn", "Auth");
         }
     }

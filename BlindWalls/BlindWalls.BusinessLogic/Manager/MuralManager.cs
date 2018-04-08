@@ -1,5 +1,6 @@
 ﻿using Domain;
 using Domain.Abstract;
+using Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,16 @@ namespace BlindWalls.BusinessLogic.Manager
         public IEnumerable<Mural> GetMuralsWithArtistId(int artistId)
         {
             return muralRepository.GetMuralsWithArtistId(artistId);
+        }
+
+        public void DeleteMural(int id)
+        {
+            muralRepository.DeleteMural(id);
+        }
+
+        public void SaveEditMural(Mural m)
+        {
+            muralRepository.SaveEditMural(m);
         }
     }
 }

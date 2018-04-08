@@ -1,17 +1,3 @@
-C:\Users\Noureddine\source\repos\BlindWalls\BlindWalls.BusinessLogic\bin\Debug\BlindWalls.BusinessLogic.dll.config
-C:\Users\Noureddine\source\repos\BlindWalls\BlindWalls.BusinessLogic\bin\Debug\BlindWalls.BusinessLogic.dll
-C:\Users\Noureddine\source\repos\BlindWalls\BlindWalls.BusinessLogic\bin\Debug\BlindWalls.BusinessLogic.pdb
-C:\Users\Noureddine\source\repos\BlindWalls\BlindWalls.BusinessLogic\bin\Debug\Domain.dll
-C:\Users\Noureddine\source\repos\BlindWalls\BlindWalls.BusinessLogic\bin\Debug\EntityFramework.dll
-C:\Users\Noureddine\source\repos\BlindWalls\BlindWalls.BusinessLogic\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\Noureddine\source\repos\BlindWalls\BlindWalls.BusinessLogic\bin\Debug\Domain.pdb
-C:\Users\Noureddine\source\repos\BlindWalls\BlindWalls.BusinessLogic\bin\Debug\Domain.dll.config
-C:\Users\Noureddine\source\repos\BlindWalls\BlindWalls.BusinessLogic\bin\Debug\EntityFramework.xml
-C:\Users\Noureddine\source\repos\BlindWalls\BlindWalls.BusinessLogic\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\Noureddine\source\repos\BlindWalls\BlindWalls.BusinessLogic\obj\Debug\BlindWalls.BusinessLogic.csprojResolveAssemblyReference.cache
-C:\Users\Noureddine\source\repos\BlindWalls\BlindWalls.BusinessLogic\obj\Debug\BlindWalls.BusinessLogic.csproj.CoreCompileInputs.cache
-C:\Users\Noureddine\source\repos\BlindWalls\BlindWalls.BusinessLogic\obj\Debug\BlindWalls.BusinessLogic.dll
-C:\Users\Noureddine\source\repos\BlindWalls\BlindWalls.BusinessLogic\obj\Debug\BlindWalls.BusinessLogic.pdb
 C:\Users\Noureddine\Documents\BlindWallsC-\BlindWalls\BlindWalls.BusinessLogic\bin\Debug\BlindWalls.BusinessLogic.dll.config
 C:\Users\Noureddine\Documents\BlindWallsC-\BlindWalls\BlindWalls.BusinessLogic\bin\Debug\BlindWalls.BusinessLogic.dll
 C:\Users\Noureddine\Documents\BlindWallsC-\BlindWalls\BlindWalls.BusinessLogic\bin\Debug\BlindWalls.BusinessLogic.pdb
