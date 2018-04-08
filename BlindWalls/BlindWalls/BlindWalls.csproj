@@ -157,6 +157,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
+    <Compile Include="Infrastructure\Stats.cs" />
     <Compile Include="Models\LogInModel.cs" />
     <Compile Include="Models\MuralModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
