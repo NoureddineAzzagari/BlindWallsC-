@@ -24,7 +24,6 @@ namespace BlindWalls.Infrastructure
         {
             loggedUsers++;
         }
-
         public void removeUser()
         {
             loggedUsers--;

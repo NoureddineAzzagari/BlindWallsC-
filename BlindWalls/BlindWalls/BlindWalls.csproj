@@ -158,6 +158,7 @@
     </Compile>
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Infrastructure\Stats.cs" />
+    <Compile Include="Models\LastViewedList.cs" />
     <Compile Include="Models\LogInModel.cs" />
     <Compile Include="Models\MuralModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -181,6 +182,7 @@
     <Content Include="Views\Artists\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Auth\LogIn.cshtml" />
+    <Content Include="Views\Murals\LastViewed.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

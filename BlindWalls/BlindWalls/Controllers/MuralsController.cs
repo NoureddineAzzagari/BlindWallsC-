@@ -20,6 +20,7 @@ namespace BlindWalls.Controllers
     {
         private IMuralRepository muralRepository;
         private MuralManager muralManager;
+        public static LastViewedList lastviewedList = new LastViewedList();
 
         public MuralsController(IMuralRepository muralRepository)
         {
@@ -42,12 +43,18 @@ namespace BlindWalls.Controllers
 
             if (mural != null)
             {
+                lastviewedList.Add(mural);   
                 return View("Details", mural);
             }
             
             return View();
         }
-
+        // GET: Murals/Lastviewed
+        public ActionResult LastViewed()
+        {
+            var muralList = lastviewedList.getLastviewed();
+            return View("LastViewed", muralList);
+        }
         
         // GET: Murals/Create
         public ActionResult Create()
