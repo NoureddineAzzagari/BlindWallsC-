@@ -45,6 +45,7 @@ namespace BlindWalls.Controllers
             {
                 lastviewedList.Add(mural);   
                 return View("Details", mural);
+
             }
             
             return View();
