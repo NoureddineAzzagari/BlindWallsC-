@@ -9,7 +9,7 @@ namespace Domain.Abstract
 {
     public interface MuralBuilderInterface
     {
-        void buildArtistAccountWithRequiredParameters(string muralName, string muralDescription, int artistId);
+        void buildArtistAccountWithRequiredParameters(string muralName, string muralDescription);
 
         void buildArtistWithOptionalParameters(string muralLocation);
 

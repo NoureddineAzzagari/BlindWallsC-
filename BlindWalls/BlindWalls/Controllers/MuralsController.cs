@@ -12,7 +12,6 @@ using Domain.Entities;
 using Domain.Abstract;
 using BlindWalls.BusinessLogic.Manager;
 using BlindWalls.Models;
-using Domain.Entities;
 using System.Security.Claims;
 
 namespace BlindWalls.Controllers
@@ -21,7 +20,6 @@ namespace BlindWalls.Controllers
     {
         private IMuralRepository muralRepository;
         private MuralManager muralManager;
-        private int artistId;
 
         public MuralsController(IMuralRepository muralRepository)
         {
@@ -44,7 +42,7 @@ namespace BlindWalls.Controllers
 
             if (mural != null)
             {
-                return View("MuralDetail");
+                return View("Details", mural);
             }
             
             return View();
@@ -54,7 +52,7 @@ namespace BlindWalls.Controllers
         // GET: Murals/Create
         public ActionResult Create()
         {
-            return View("CreateMural");
+            return View("Create");
         }
 
         // POST: Murals/Create
@@ -62,31 +60,36 @@ namespace BlindWalls.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MuralName, MuralDescription, MuralLocation, ArtistID")] MuralModel model)
+        public ActionResult Create([Bind(Include = "MuralName, MuralDescription, MuralLocation")] Mural model)
         {
+            // Builder pattern doesnt seem to work however the artistID is properly added
             MuralBuilderInterface muralBuilder = new MuralBuilder();
             Mural mural = new Mural();
 
             var claimsIdentity = (ClaimsIdentity)this.User.Identity;
             var claim = claimsIdentity.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier);
             string userId = claim.Value;
-            model.ArtistId = Int32.Parse(userId);
+            model.ArtistID = Int32.Parse(userId);
 
-            muralBuilder.buildArtistAccountWithRequiredParameters(model.MuralName, model.MuralDescription, model.ArtistId);
+            muralBuilder.buildArtistAccountWithRequiredParameters(model.MuralName, model.MuralDescription);
             muralBuilder.buildArtistWithOptionalParameters(model.MuralLocation);
 
             mural = muralBuilder.GetBuildedMural();
-            mural.ArtistID = model.ArtistId;
+            mural.ArtistID = model.ArtistID;
+          //  mural.MuralDescription = model.MuralDescription;
+         //   mural.MuralName = model.MuralName;
+
             muralRepository.InsertMural(mural);
 
-            return View("CreateMural", mural);
+            return View("Create", mural);
         }
 
         // GET: Murals/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int id)
         {
+            Mural muraltoedit = muralManager.GetMuralWithId(id);
            
-            return View();
+            return View("Edit", muraltoedit);
         }
 
         // POST: Murals/Edit/5
@@ -96,15 +99,15 @@ namespace BlindWalls.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "MuralId,MuralName,MuralDescription,ArtistID")] Mural mural)
         {
-        
+            // add edit logic to manager and then put it here
             return View(mural);
         }
 
         // GET: Murals/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int id)
         {
-           
-            return View();
+            Mural muraltodelete = muralManager.GetMuralWithId(id);
+            return View(muraltodelete);
         }
 
         // POST: Murals/Delete/5
@@ -112,7 +115,8 @@ namespace BlindWalls.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            
+            muralManager.DeleteMural(id);
+
             return RedirectToAction("Index");
         }
 

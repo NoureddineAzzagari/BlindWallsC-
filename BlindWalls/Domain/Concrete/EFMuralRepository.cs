@@ -12,6 +12,12 @@ namespace Domain.Concrete
     {
         private EFDbContext context = new EFDbContext();
 
+        public void DeleteMural(int muralID)
+        {
+            context.Murals.Remove(GetMuralWithId(muralID));
+            SaveChanges();
+        }
+
         public IEnumerable<Mural> getAll()
         {
             return context.Murals;

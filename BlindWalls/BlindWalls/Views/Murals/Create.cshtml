@@ -22,11 +22,6 @@
                 @Html.ValidationMessageFor(model => model.MuralName, "", new { @class = "text-danger" })
             </div>
         </div>
-
-		<div class="panel-body">
-			@Html.HiddenFor(model => model.ArtistID)
-		</div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.MuralDescription, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">

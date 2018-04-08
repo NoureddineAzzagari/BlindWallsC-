@@ -15,6 +15,8 @@ namespace Domain.Abstract
 
         void InsertMural(Mural mural);
 
+        void DeleteMural(int MuralID);
+
         void SaveChanges();
 
         Mural GetMuralWithId(int artistId);
