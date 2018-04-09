@@ -13,14 +13,18 @@ namespace BlindWalls.Controllers
 {
     public class AuthController : Controller
     {
-        private AuthManager authManager;
+        private AuthManager authenticationManager;
+        private IAccountRepository accountRepository;
+        private IRoleRepository roleRepository;
         private IArtistRepository artistRepository;
         Stats stats = Stats.GetSingleton();
         
-        public AuthController(IArtistRepository artistRepository)
+        public AuthController(IAccountRepository accountRepository, IRoleRepository roleRepository, IArtistRepository artistRepository)
         {
             this.artistRepository = artistRepository;
-            authManager = new AuthManager(artistRepository);
+            this.accountRepository = accountRepository;
+            this.roleRepository = roleRepository;
+            authenticationManager = new AuthManager(accountRepository, roleRepository, artistRepository);
         }
 
        [HttpGet]
@@ -40,15 +44,21 @@ namespace BlindWalls.Controllers
             {
                 return View("LogIn");
             }
+            
+            var account = authenticationManager.GetAccount(model.Username);
+            var artist = authenticationManager.GetArtistWithAccountId(account.AccountID);
+            
 
-            var artist = artistRepository.GetArtist(model.Username, model.Password);
-            int artistId = artist.ArtistID;
-
-            if (authManager.CheckAccountValidity(model.Username, model.Password))
+            if (authenticationManager.CheckAccountValidity(model.Username, model.Password))
             {
+                var role = authenticationManager.GetAccount(model.Username).Role.RoleName;
+
                 var identity = new ClaimsIdentity(new[]
                 {
-                    new Claim(ClaimTypes.NameIdentifier, artist.ArtistID.ToString()), new Claim(ClaimTypes.Name, model.Username)}, "ApplicationCookie");
+                    new Claim(ClaimTypes.NameIdentifier, account.AccountID.ToString()),
+                    new Claim(ClaimTypes.Name, model.Username),
+                    new Claim(ClaimTypes.Role, role.ToString())}, 
+                    "ApplicationCookie");
 
                 var ctx = Request.GetOwinContext();
                 var authManager = ctx.Authentication;
@@ -56,8 +66,7 @@ namespace BlindWalls.Controllers
                 stats.addUser();
 
                 authManager.SignIn(identity);
-
-                TempData["artistId"] = artistId;
+                
                 return RedirectToAction("Index", "Murals");
             }
 

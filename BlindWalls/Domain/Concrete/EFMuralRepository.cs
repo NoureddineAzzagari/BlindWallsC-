@@ -28,6 +28,11 @@ namespace Domain.Concrete
             return context.Murals.Where(a => a.MuralName == username).Select(a => a).First();
         }
 
+        public IEnumerable<Mural> GetMuralsWithAccountId(int accountId)
+        {
+            return context.Murals.Where(m => m.Artist.Account.AccountID == accountId);
+        }
+
         public IEnumerable<Mural> GetMuralsWithArtistId(int artistId)
         {
             return context.Murals.Where(m => m.ArtistID == artistId);
@@ -47,6 +52,20 @@ namespace Domain.Concrete
         public void SaveChanges()
         {
             context.SaveChanges();
+        }
+
+        public void SaveEditMural(Mural m)
+        {
+            Mural dbEntry = context.Murals.Find(m.MuralId);
+
+            if (dbEntry != null)
+            {
+                dbEntry.MuralName = m.MuralName;
+                dbEntry.MuralDescription = m.MuralDescription;
+                dbEntry.ArtistID = m.ArtistID;
+                dbEntry.MuralLocation = m.MuralLocation;
+            }
+            SaveChanges();
         }
     }
 }

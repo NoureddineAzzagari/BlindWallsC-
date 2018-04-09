@@ -11,25 +11,29 @@ namespace BlindWalls.BusinessLogic
 {
     public class AuthManager
     {
+        private IAccountRepository accountRepository = new EFAccountRepository();
+        private IRoleRepository roleRepository = new EFRoleRepository();
         private IArtistRepository artistRepository = new EFArtistRepository();
 
-        public AuthManager(IArtistRepository artistRepository)
+        public AuthManager(IAccountRepository accountRepository, IRoleRepository roleRepository, IArtistRepository artistRepository)
         {
+            this.accountRepository = accountRepository;
+            this.roleRepository = roleRepository;
             this.artistRepository = artistRepository;
         }
 
-        public Artist GetArtist(string username, string password)
+        public Account GetAccount(string username)
         {
-            return artistRepository.GetArtist(username, password);
+            return accountRepository.GetAccount(username);
         }
 
         public bool CheckAccountValidity(string username, string password)
         {
-            var account = artistRepository.GetArtist(username, password);
+            var account = accountRepository.GetAccount(username);
 
             if(account != null)
             {
-                var passwordString = account.ArtistPassword;
+                var passwordString = account.Password;
 
                 if(passwordString == password)
                 {
@@ -43,6 +47,14 @@ namespace BlindWalls.BusinessLogic
             return false;
         }
 
+        public Role GetRoleByName(string roleName)
+        {
+            return roleRepository.GetRoleByName(roleName);
+        }
 
+        public Artist GetArtistWithAccountId(int accountId)
+        {
+            return artistRepository.GetArtistWithAccountId(accountId);
+        }
     }
 }

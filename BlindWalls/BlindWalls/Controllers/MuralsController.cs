@@ -32,7 +32,11 @@ namespace BlindWalls.Controllers
         public ActionResult Index()
         {
             //artistId = (int)TempData["artistId"];
-            var muralList = muralManager.GetAllMurals();
+            var claimsIdentity = (ClaimsIdentity)this.User.Identity;
+            var claim = claimsIdentity.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier);
+            string userId = claim.Value;
+
+            var muralList = muralManager.GetMuralsWithAccountId(Int32.Parse(userId));
             return View("Index", muralList);
         }
 
@@ -108,7 +112,11 @@ namespace BlindWalls.Controllers
         public ActionResult Edit([Bind(Include = "MuralId,MuralName,MuralDescription,ArtistID")] Mural mural)
         {
             // add edit logic to manager and then put it here
-            return View(mural);
+            muralManager.SaveEditMural(mural);
+
+            var muralList = muralManager.GetAllMurals();
+
+            return RedirectToAction("Index", muralList);
         }
 
         // GET: Murals/Delete/5

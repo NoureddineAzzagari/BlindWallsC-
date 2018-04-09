@@ -29,6 +29,8 @@ namespace BlindWalls.Infrastructure
         {
             kernel.Bind<IArtistRepository>().To<EFArtistRepository>();
             kernel.Bind<IMuralRepository>().To<EFMuralRepository>();
+            kernel.Bind<IRoleRepository>().To<EFRoleRepository>();
+            kernel.Bind<IAccountRepository>().To<EFAccountRepository>();
         }
     }
 }
