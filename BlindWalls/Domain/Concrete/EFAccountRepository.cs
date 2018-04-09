@@ -34,6 +34,12 @@ namespace Domain.Concrete
             account.RoleID = 1;
             context.Accounts.Add(account);
             SaveChanges();
+            Account inserted = context.Accounts.OrderByDescending(o => o.AccountID).FirstOrDefault();
+            Artist artist = new Artist();
+            artist.ArtistName = inserted.Username;
+            artist.Account = inserted;
+            context.Artists.Add(artist);
+            SaveChanges();
         }
 
         public Account GetAccountWithId(int accountId)
