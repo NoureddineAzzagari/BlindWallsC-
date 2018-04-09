@@ -29,10 +29,11 @@ namespace Domain.Concrete
             }
         }
 
-        public void InsertAccount(Account account, Artist artist)
+        public void InsertAccount(Account account)
         {
+            account.RoleID = 1;
             context.Accounts.Add(account);
-            context.Artists.Add(artist);
+            SaveChanges();
         }
 
         public Account GetAccountWithId(int accountId)

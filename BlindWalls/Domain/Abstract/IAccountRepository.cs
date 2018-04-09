@@ -13,7 +13,7 @@ namespace Domain.Abstract
 
         Account GetAccount(string username);
 
-        void InsertAccount(Account account, Artist artist);
+        void InsertAccount(Account account);
 
         void SaveChanges();
 
