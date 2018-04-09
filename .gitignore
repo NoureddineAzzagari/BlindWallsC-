@@ -188,6 +188,11 @@ PublishScripts/
 # The packages folder can be ignored because of Package Restore
 **/packages/*
 BlindWalls/packages/
+**/packages/*
+!**/packages/repositories.config
+#NuGet
+packages
+!packages/repositories.config
 # except build/, which is used as an MSBuild target.
 !**/packages/build/
 # Uncomment if necessary however generally it will be regenerated when needed
