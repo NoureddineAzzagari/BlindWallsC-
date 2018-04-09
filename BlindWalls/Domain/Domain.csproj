@@ -55,8 +55,10 @@
     <Compile Include="Concrete\EFDbContext.cs" />
     <Compile Include="Concrete\EFMuralRepository.cs" />
     <Compile Include="Concrete\MuralBuilder.cs" />
+    <Compile Include="Entities\Account.cs" />
     <Compile Include="Entities\Artist.cs" />
     <Compile Include="Entities\Mural.cs" />
+    <Compile Include="Entities\Role.cs" />
     <Compile Include="Migrations\201804060946552_Artist &amp; Mural.cs" />
     <Compile Include="Migrations\201804060946552_Artist &amp; Mural.Designer.cs">
       <DependentUpon>201804060946552_Artist &amp; Mural.cs</DependentUpon>
@@ -76,6 +78,10 @@
     <Compile Include="Migrations\201804061206077_g.cs" />
     <Compile Include="Migrations\201804061206077_g.Designer.cs">
       <DependentUpon>201804061206077_g.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804091101404_f.cs" />
+    <Compile Include="Migrations\201804091101404_f.Designer.cs">
+      <DependentUpon>201804091101404_f.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -99,6 +105,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804061206077_g.resx">
       <DependentUpon>201804061206077_g.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804091101404_f.resx">
+      <DependentUpon>201804091101404_f.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

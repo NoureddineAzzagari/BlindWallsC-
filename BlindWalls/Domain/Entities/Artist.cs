@@ -16,7 +16,7 @@ namespace Domain.Entities
         [Required(ErrorMessage = "U moet een gebruikersnaam invoeren!")]
         [Display(Name = "Gebruikersnaam")]
         public String ArtistName { get; set; }
-        public String ArtistPassword { get; set; }
         public virtual ICollection<Mural> Murals { get; set; }
+        public virtual Account Account { get; set; }
     }
 }

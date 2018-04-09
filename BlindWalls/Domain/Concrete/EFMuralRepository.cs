@@ -51,7 +51,6 @@ namespace Domain.Concrete
 
         public void SaveEditMural(Mural m)
         {
-
             Mural dbEntry = context.Murals.Find(m.MuralId);
 
             if (dbEntry != null)

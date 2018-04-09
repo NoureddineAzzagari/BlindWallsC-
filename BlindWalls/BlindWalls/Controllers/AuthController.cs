@@ -56,8 +56,7 @@ namespace BlindWalls.Controllers
                 stats.addUser();
 
                 authManager.SignIn(identity);
-
-                TempData["artistId"] = artistId;
+                
                 return RedirectToAction("Index", "Murals");
             }
 
