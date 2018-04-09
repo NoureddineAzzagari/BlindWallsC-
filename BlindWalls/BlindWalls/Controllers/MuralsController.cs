@@ -112,9 +112,7 @@ namespace BlindWalls.Controllers
         public ActionResult Edit([Bind(Include = "MuralId,MuralName,MuralDescription,ArtistID")] Mural mural)
         {
             // add edit logic to manager and then put it here
-            
-            var m = muralManager.GetMuralWithId(mural.MuralId);
-            muralManager.SaveEditMural(m);
+            muralManager.SaveEditMural(mural);
 
             var muralList = muralManager.GetAllMurals();
 
