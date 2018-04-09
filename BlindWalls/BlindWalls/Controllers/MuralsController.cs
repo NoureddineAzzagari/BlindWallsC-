@@ -36,7 +36,7 @@ namespace BlindWalls.Controllers
             var claim = claimsIdentity.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier);
             string userId = claim.Value;
 
-            var muralList = muralManager.GetMuralsWithArtistId(Int32.Parse(userId));
+            var muralList = muralManager.GetMuralsWithAccountId(Int32.Parse(userId));
             return View("Index", muralList);
         }
 

@@ -33,6 +33,11 @@ namespace BlindWalls.BusinessLogic.Manager
             return muralRepository.GetMuralsWithArtistId(artistId);
         }
 
+        public IEnumerable<Mural> GetMuralsWithAccountId(int accountId)
+        {
+            return muralRepository.GetMuralsWithAccountId(accountId);
+        }
+
         public void DeleteMural(int id)
         {
             muralRepository.DeleteMural(id);

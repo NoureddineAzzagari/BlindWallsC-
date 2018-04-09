@@ -16,3 +16,4 @@ C:\Users\Noureddine\Documents\BlindWallsC-\BlindWalls\Domain\obj\Debug\Domain.cs
 C:\Users\Noureddine\Documents\BlindWallsC-\BlindWalls\Domain\obj\Debug\Domain.dll
 C:\Users\Noureddine\Documents\BlindWallsC-\BlindWalls\Domain\obj\Debug\Domain.pdb
 C:\Users\Noureddine\Documents\BlindWallsC-\BlindWalls\Domain\obj\Debug\Domain.Migrations.f.resources
+C:\Users\Noureddine\Documents\BlindWallsC-\BlindWalls\Domain\obj\Debug\Domain.Migrations.sf.resources

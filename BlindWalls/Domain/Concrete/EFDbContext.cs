@@ -12,5 +12,7 @@ namespace Domain.Concrete
     {
         public DbSet<Mural> Murals { get; set; }
         public DbSet<Artist> Artists { get; set; }
+        public DbSet<Account> Accounts { get; set; }
+        public DbSet<Role> Roles { get; set; }
     }
 }

@@ -11,12 +11,13 @@ namespace Domain.Abstract
     {
         IEnumerable<Artist> getAll();
 
-        Artist GetArtist(string username, string password);
+        Artist GetArtist(string username);
 
         void InsertArtist(Artist artist);
 
         void SaveChanges();
 
         Artist GetArtistWithId(int artistId);
+        Artist GetArtistWithAccountId(int accountId);
     }
 }

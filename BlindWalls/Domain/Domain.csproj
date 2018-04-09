@@ -48,12 +48,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\IAccountRepository.cs" />
     <Compile Include="Abstract\IArtistRepository.cs" />
     <Compile Include="Abstract\IMuralRepository.cs" />
+    <Compile Include="Abstract\IRoleRepository.cs" />
     <Compile Include="Abstract\MuralBuilderInterface.cs" />
+    <Compile Include="Concrete\EFAccountRepository.cs" />
     <Compile Include="Concrete\EFArtistRepository.cs" />
     <Compile Include="Concrete\EFDbContext.cs" />
     <Compile Include="Concrete\EFMuralRepository.cs" />
+    <Compile Include="Concrete\EFRoleRepository.cs" />
     <Compile Include="Concrete\MuralBuilder.cs" />
     <Compile Include="Entities\Account.cs" />
     <Compile Include="Entities\Artist.cs" />
@@ -83,6 +87,10 @@
     <Compile Include="Migrations\201804091101404_f.Designer.cs">
       <DependentUpon>201804091101404_f.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804091130422_sf.cs" />
+    <Compile Include="Migrations\201804091130422_sf.Designer.cs">
+      <DependentUpon>201804091130422_sf.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -108,6 +116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804091101404_f.resx">
       <DependentUpon>201804091101404_f.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804091130422_sf.resx">
+      <DependentUpon>201804091130422_sf.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

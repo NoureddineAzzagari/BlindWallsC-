@@ -16,5 +16,10 @@ namespace Domain.Concrete
         {
             return context.Roles;
         }
+
+        public Role GetRoleByName(string roleName)
+        {
+            return context.Roles.Where(r => r.RoleName.Equals(roleName)).First();
+        }
     }
 }
