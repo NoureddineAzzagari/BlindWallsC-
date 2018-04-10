@@ -53,12 +53,15 @@
     <Compile Include="Abstract\IMuralRepository.cs" />
     <Compile Include="Abstract\IRoleRepository.cs" />
     <Compile Include="Abstract\MuralBuilderInterface.cs" />
+    <Compile Include="Abstract\SearchStrategy.cs" />
     <Compile Include="Concrete\EFAccountRepository.cs" />
     <Compile Include="Concrete\EFArtistRepository.cs" />
     <Compile Include="Concrete\EFDbContext.cs" />
     <Compile Include="Concrete\EFMuralRepository.cs" />
     <Compile Include="Concrete\EFRoleRepository.cs" />
+    <Compile Include="Concrete\IDStrategy.cs" />
     <Compile Include="Concrete\MuralBuilder.cs" />
+    <Compile Include="Concrete\NameStrategy.cs" />
     <Compile Include="Entities\Account.cs" />
     <Compile Include="Entities\Artist.cs" />
     <Compile Include="Entities\Mural.cs" />
