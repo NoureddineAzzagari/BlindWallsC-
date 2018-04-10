@@ -21,6 +21,7 @@ namespace BlindWalls.Controllers
             adminManager = new AdminManager(muralRepository, artistRepository);
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             var muralList = adminManager.GetAllMurals();
@@ -28,6 +29,7 @@ namespace BlindWalls.Controllers
             return View("Index", muralList);
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult ArtistsOverview()
         {
             var artistList = adminManager.GetAllArtists();
@@ -35,6 +37,7 @@ namespace BlindWalls.Controllers
             return View("ArtistsOverview", artistList);
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult MuralsList(string searchStrategy, string searchParameter) 
         {
             var searchList = adminManager.GetAllMuralsWithSearchStrategy(searchParameter, searchStrategy);

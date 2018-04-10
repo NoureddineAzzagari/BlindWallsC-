@@ -29,9 +29,12 @@
 					if (User.IsInRole("Admin"))
 					{
 						<li> <a href="/Auth/LogOut/" style="text-align:right">Logout, @User.Identity.Name</a></li>
-						<li> <a href="/Murals/Index/" style="text-align:right">Statistieken</a></li>
-					}
-						
+						<li> <a href="/Admin/Index/" style="text-align:right">Overzicht alle muren</a></li>
+						<li> <a href="/Murals/LastViewed/" style="text-align:right">Statistieken</a></li>
+						<li> <a href="/Admin/ArtistsOverview/" style="text-align:right">Overzicht alle artiesten</a></li>
+
+						}
+
 					}
 					else
 					{

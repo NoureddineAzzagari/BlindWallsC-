@@ -29,6 +29,7 @@ namespace BlindWalls.Controllers
         }
 
         // GET: Murals
+        [Authorize(Roles = "Artist")]
         public ActionResult Index()
         {
             var claimsIdentity = (ClaimsIdentity)this.User.Identity;
@@ -40,6 +41,7 @@ namespace BlindWalls.Controllers
         }
 
         // GET: Murals/Details/5
+        [Authorize(Roles = "Artist")]
         public ActionResult Details(int id)
         {
             var mural = muralManager.GetMuralWithId(id);
@@ -54,13 +56,15 @@ namespace BlindWalls.Controllers
             return View();
         }
         // GET: Murals/Lastviewed
+        [Authorize(Roles = "Admin")]
         public ActionResult LastViewed()
         {
             var muralList = lastviewedList.getLastviewed();
             return View("LastViewed", muralList);
         }
-        
+
         // GET: Murals/Create
+        [Authorize(Roles = "Artist")]
         public ActionResult Create()
         {
             return View("Create");
@@ -71,6 +75,7 @@ namespace BlindWalls.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Artist")]
         public ActionResult Create([Bind(Include = "MuralName, MuralDescription, MuralLocation")] Mural model)
         {
             // Builder pattern doesnt seem to work however the artistID is properly added
@@ -96,6 +101,7 @@ namespace BlindWalls.Controllers
         }
 
         // GET: Murals/Edit/5
+        [Authorize(Roles = "Artist")]
         public ActionResult Edit(int id)
         {
             Mural muraltoedit = muralManager.GetMuralWithId(id);
@@ -107,6 +113,7 @@ namespace BlindWalls.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize(Roles = "Artist")]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "MuralId,MuralName,MuralDescription,ArtistID")] Mural mural)
         {
@@ -119,6 +126,7 @@ namespace BlindWalls.Controllers
         }
 
         // GET: Murals/Delete/5
+        [Authorize(Roles = "Artist")]
         public ActionResult Delete(int id)
         {
             Mural muraltodelete = muralManager.GetMuralWithId(id);
@@ -127,6 +135,7 @@ namespace BlindWalls.Controllers
 
         // POST: Murals/Delete/5
         [HttpPost, ActionName("Delete")]
+        [Authorize(Roles = "Artist")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
