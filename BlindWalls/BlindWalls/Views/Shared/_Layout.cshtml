@@ -20,18 +20,23 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    @if (User.IsInRole("Artist")) { 
+					@if (User.Identity.IsAuthenticated) {
+
+                    if (User.IsInRole("Artist")) {
                     <li> <a href="/Auth/LogOut/"style="text-align:right">Logout, @User.Identity.Name</a></li>
 					<li> <a href="/Murals/Index/" style="text-align:right">Overzicht muren</a></li>
 					}
-					@if (User.IsInRole("Admin"))
+					if (User.IsInRole("Admin"))
 					{
 						<li> <a href="/Auth/LogOut/" style="text-align:right">Logout, @User.Identity.Name</a></li>
-						<li> <a href="/Murals/Index/" style="text-align:right">Statistieken/a></li>
+						<li> <a href="/Murals/Index/" style="text-align:right">Statistieken</a></li>
+					}
+						
 					}
 					else
 					{
-						<li><a href = "/Auth/LogIn/"style = "text-align:right" > Log in</a></li>
+						<li><a href = "/Auth/LogIn/"style = "text-align:right">Log in</a></li>
+						<li><a href = "/Auth/Create/"style = "text-align:right"> Registeer</a></li>
 					}
                 </ul>
             </div>

@@ -2,6 +2,8 @@
 using BlindWalls.Infrastructure;
 using BlindWalls.Models;
 using Domain.Abstract;
+using Domain.Concrete;
+using Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,7 +57,7 @@ namespace BlindWalls.Controllers
 
                 var identity = new ClaimsIdentity(new[]
                 {
-                    new Claim(ClaimTypes.NameIdentifier, account.AccountID.ToString()),
+                    new Claim(ClaimTypes.NameIdentifier, artist.ArtistID.ToString()),
                     new Claim(ClaimTypes.Name, model.Username),
                     new Claim(ClaimTypes.Role, role.ToString())}, 
                     "ApplicationCookie");
@@ -93,6 +95,27 @@ namespace BlindWalls.Controllers
             stats.removeUser();
 
             return RedirectToAction("LogIn", "Auth");
+        }
+
+        // GET: Accounts/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Accounts/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "Username,Password")] Account account)
+        {
+            if (ModelState.IsValid)
+            {
+                accountRepository.InsertAccount(account);
+                return RedirectToAction("LogIn", "Auth");
+            }
+            return View(account);
         }
     }
 }

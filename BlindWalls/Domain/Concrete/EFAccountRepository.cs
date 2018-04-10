@@ -29,10 +29,17 @@ namespace Domain.Concrete
             }
         }
 
-        public void InsertAccount(Account account, Artist artist)
+        public void InsertAccount(Account account)
         {
+            account.RoleID = 2;
             context.Accounts.Add(account);
+            SaveChanges();
+            Account inserted = context.Accounts.OrderByDescending(o => o.AccountID).FirstOrDefault();
+            Artist artist = new Artist();
+            artist.ArtistName = inserted.Username;
+            artist.Account = inserted;
             context.Artists.Add(artist);
+            SaveChanges();
         }
 
         public Account GetAccountWithId(int accountId)

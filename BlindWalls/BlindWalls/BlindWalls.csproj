@@ -183,6 +183,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Auth\LogIn.cshtml" />
     <Content Include="Views\Murals\LastViewed.cshtml" />
+    <Content Include="Views\Auth\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
