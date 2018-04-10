@@ -34,8 +34,8 @@ namespace BlindWalls.Controllers
             var claimsIdentity = (ClaimsIdentity)this.User.Identity;
             var claim = claimsIdentity.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier);
             string userId = claim.Value;
-            // werkt niet helemaal?
-            var muralList = muralManager.GetMuralsWithAccountId(Int32.Parse(userId));
+            
+            var muralList = muralManager.GetMuralsWithArtistId(Int32.Parse(userId));
             return View("Index", muralList);
         }
 

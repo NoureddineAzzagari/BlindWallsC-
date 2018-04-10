@@ -48,7 +48,7 @@ namespace BlindWalls.Controllers
             }
             
             var account = authenticationManager.GetAccount(model.Username);
-          //  var artist = authenticationManager.GetArtistWithAccountId(account.AccountID);
+            var artist = authenticationManager.GetArtistWithAccountId(account.AccountID);
             
 
             if (authenticationManager.CheckAccountValidity(model.Username, model.Password))
@@ -57,7 +57,7 @@ namespace BlindWalls.Controllers
 
                 var identity = new ClaimsIdentity(new[]
                 {
-                    new Claim(ClaimTypes.NameIdentifier, account.AccountID.ToString()),
+                    new Claim(ClaimTypes.NameIdentifier, artist.ArtistID.ToString()),
                     new Claim(ClaimTypes.Name, model.Username),
                     new Claim(ClaimTypes.Role, role.ToString())}, 
                     "ApplicationCookie");
