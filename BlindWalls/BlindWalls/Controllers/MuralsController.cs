@@ -115,7 +115,7 @@ namespace BlindWalls.Controllers
         [HttpPost]
         [Authorize(Roles = "Artist")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MuralId,MuralName,MuralDescription,ArtistID")] Mural mural)
+        public ActionResult Edit([Bind(Include = "MuralId,MuralName,MuralDescription,MuralLocation,ArtistID")] Mural mural)
         {
             // add edit logic to manager and then put it here
             muralManager.SaveEditMural(mural);

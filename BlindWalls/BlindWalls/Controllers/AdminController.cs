@@ -48,6 +48,21 @@ namespace BlindWalls.Controllers
             return View("Index", searchList);
         }
 
+        // GET: Murals/Details/5
+        [Authorize(Roles = "Admin")]
+        public ActionResult Details(int id)
+        {
+            var mural = adminManager.GetMuralById(id);
+
+            if (mural != null)
+            {
+                return View("Details", mural);
+
+            }
+
+            return View();
+        }
+
         [Authorize(Roles = "Admin")]
         public ActionResult StatsPage()
         {

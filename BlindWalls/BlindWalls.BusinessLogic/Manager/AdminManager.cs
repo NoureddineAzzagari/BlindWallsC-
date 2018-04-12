@@ -44,6 +44,10 @@ namespace BlindWalls.BusinessLogic.Manager
                 return searchStrategy.SearchMuralsWithName(searchParameter);
             }
         }
+        public Mural GetMuralById(int id)
+        {
+            return muralRepository.GetMuralWithId(id);
+        }
 
 
     }
