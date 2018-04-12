@@ -1,6 +1,8 @@
-﻿using BlindWalls.BusinessLogic.Manager;
+using BlindWalls.BusinessLogic.Manager;
 using BlindWalls.Infrastructure;
 using BlindWalls.Models;
+﻿using BlindWalls.BusinessLogic.AOP;
+using BlindWalls.BusinessLogic.Manager;
 using Domain.Abstract;
 using System;
 using System.Collections.Generic;
@@ -10,6 +12,7 @@ using System.Web.Mvc;
 
 namespace BlindWalls.Controllers
 {
+    [Trace]
     public class AdminController : Controller
     {
         private IMuralRepository muralRepository;
