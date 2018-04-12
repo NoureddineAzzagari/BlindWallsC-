@@ -13,9 +13,11 @@ using Domain.Abstract;
 using BlindWalls.BusinessLogic.Manager;
 using BlindWalls.Models;
 using System.Security.Claims;
+using BlindWalls.BusinessLogic.AOP;
 
 namespace BlindWalls.Controllers
 {
+    [Trace]
     public class MuralsController : Controller
     {
         private IMuralRepository muralRepository;
