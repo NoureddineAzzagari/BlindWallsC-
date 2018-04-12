@@ -1,0 +1,12 @@
+﻿@model BlindWalls.Models.StatsModel
+
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Statisieken over de website</h2>
+
+<th>
+    Gebruikers online op dit moment: @Html.DisplayFor(model => model.LoggedIn)
+</th>

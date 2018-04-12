@@ -1,4 +1,6 @@
 ﻿using BlindWalls.BusinessLogic.Manager;
+using BlindWalls.Infrastructure;
+using BlindWalls.Models;
 using Domain.Abstract;
 using System;
 using System.Collections.Generic;
@@ -13,6 +15,7 @@ namespace BlindWalls.Controllers
         private IMuralRepository muralRepository;
         private IArtistRepository artistRepository;
         private AdminManager adminManager;
+        Stats stats = Stats.GetSingleton();
 
         public AdminController(IMuralRepository muralRepository, IArtistRepository artistRepository)
         {
@@ -43,6 +46,15 @@ namespace BlindWalls.Controllers
             var searchList = adminManager.GetAllMuralsWithSearchStrategy(searchParameter, searchStrategy);
 
             return View("Index", searchList);
+        }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult StatsPage()
+        {
+            StatsModel statsmodel = new StatsModel();
+            statsmodel.LoggedIn = stats.amountUser();
+
+            return View("Stats", statsmodel);
         }
     }
 }

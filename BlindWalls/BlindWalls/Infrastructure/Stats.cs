@@ -28,5 +28,10 @@ namespace BlindWalls.Infrastructure
         {
             loggedUsers--;
         }
+        public int amountUser()
+        {
+            int test = loggedUsers;
+            return test;
+        }
     }
 }

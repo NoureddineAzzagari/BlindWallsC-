@@ -23,16 +23,16 @@
 					@if (User.Identity.IsAuthenticated) {
 
                     if (User.IsInRole("Artist")) {
-                    <li> <a href="/Auth/LogOut/"style="text-align:right">Logout, @User.Identity.Name</a></li>
 					<li> <a href="/Murals/Index/" style="text-align:right">Overzicht muren</a></li>
+                    <li> <a href="/Auth/LogOut/"style="text-align:right">Logout, @User.Identity.Name</a></li>
 					}
 					if (User.IsInRole("Admin"))
 					{
-						<li> <a href="/Auth/LogOut/" style="text-align:right">Logout, @User.Identity.Name</a></li>
 						<li> <a href="/Admin/Index/" style="text-align:right">Overzicht alle muren</a></li>
-						<li> <a href="/Murals/LastViewed/" style="text-align:right">Statistieken</a></li>
+						<li> <a href="/Murals/LastViewed/" style="text-align:right">Overzicht laatst bekeken muren</a></li>
 						<li> <a href="/Admin/ArtistsOverview/" style="text-align:right">Overzicht alle artiesten</a></li>
-
+                        <li> <a href="/Admin/Statspage/" style="text-align:right">Statisieken Website</a></li>
+                        <li> <a href="/Auth/LogOut/" style="text-align:right">Logout, @User.Identity.Name</a></li>
 						}
 
 					}
