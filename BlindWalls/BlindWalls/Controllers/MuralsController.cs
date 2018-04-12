@@ -80,7 +80,6 @@ namespace BlindWalls.Controllers
         [Authorize(Roles = "Artist")]
         public ActionResult Create([Bind(Include = "MuralName, MuralDescription, MuralLocation")] Mural model)
         {
-            // Builder pattern doesnt seem to work however the artistID is properly added
             MuralBuilderInterface muralBuilder = new MuralBuilder();
             Mural mural = new Mural();
 
@@ -94,12 +93,12 @@ namespace BlindWalls.Controllers
 
             mural = muralBuilder.GetBuildedMural();
             mural.ArtistID = model.ArtistID;
-          //  mural.MuralDescription = model.MuralDescription;
-         //   mural.MuralName = model.MuralName;
 
             muralRepository.InsertMural(mural);
 
-            return View("Create", mural);
+            IEnumerable<Mural> murallist = muralManager.GetAllMurals();
+
+            return View("Index", murallist);
         }
 
         // GET: Murals/Edit/5
@@ -119,7 +118,6 @@ namespace BlindWalls.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "MuralId,MuralName,MuralDescription,MuralLocation,ArtistID")] Mural mural)
         {
-            // add edit logic to manager and then put it here
             muralManager.SaveEditMural(mural);
 
             var muralList = muralManager.GetAllMurals();

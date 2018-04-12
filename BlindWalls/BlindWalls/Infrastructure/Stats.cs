@@ -14,6 +14,7 @@ namespace BlindWalls.Infrastructure
 
         private static readonly Stats _stats = new Stats();
         private int loggedUsers;
+        private int amountSearch;
 
         public static Stats GetSingleton()
         {
@@ -33,5 +34,16 @@ namespace BlindWalls.Infrastructure
             int test = loggedUsers;
             return test;
         }
+
+        public void addSearch()
+        {
+            amountSearch++;
+        }
+        public int amountSearched()
+        {
+            int test = amountSearch;
+            return test;
+        }
+
     }
 }

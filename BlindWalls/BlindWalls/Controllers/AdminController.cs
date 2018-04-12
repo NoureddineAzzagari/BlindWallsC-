@@ -47,6 +47,7 @@ namespace BlindWalls.Controllers
         public ActionResult MuralsList(string searchStrategy, string searchParameter) 
         {
             var searchList = adminManager.GetAllMuralsWithSearchStrategy(searchParameter, searchStrategy);
+            stats.addSearch();
 
             return View("Index", searchList);
         }
@@ -70,7 +71,8 @@ namespace BlindWalls.Controllers
         public ActionResult StatsPage()
         {
             StatsModel statsmodel = new StatsModel();
-            statsmodel.LoggedIn = stats.amountUser();
+            statsmodel.loggedIn = stats.amountUser();
+            statsmodel.amountSearch = stats.amountSearched();
 
             return View("Stats", statsmodel);
         }

@@ -7,6 +7,7 @@ namespace BlindWalls.Models
 {
     public class StatsModel
     {
-        public int LoggedIn { get; set; }
+        public int loggedIn { get; set; }
+        public int amountSearch { get; set; }
     }
 }

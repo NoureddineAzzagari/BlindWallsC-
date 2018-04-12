@@ -27,7 +27,7 @@
 				@Html.DisplayFor(modelItem => item.ArtistID)
 			</td>
 			<td>
-				@Html.ActionLink("Lijst van muren van deze artiest", "MuralsList", new { id = item.ArtistID}) |
+				@Html.ActionLink("Lijst van muren van deze artiest", "MuralsList", new { searchParameter = item.ArtistID, searchStrategy = "id"})
 			</td>
 		</tr>
 	}
